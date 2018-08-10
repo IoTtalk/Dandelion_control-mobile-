@@ -14,7 +14,11 @@
     width: 3.75em;
     height: 2.5em;
     text-align: center;
-    border: 0;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
     background-color: #41C3BE;
     color: white;
 }
