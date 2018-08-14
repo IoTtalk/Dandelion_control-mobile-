@@ -43,10 +43,7 @@ table {
     margin-right: 10px;
 }
 
-.val {
-    
-}
-
 form {
     min-width: 30%;
+    padding-right: 5px;
 }
