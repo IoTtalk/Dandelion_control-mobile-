@@ -26,11 +26,11 @@ $(function() {
         step = feature_level_data[feature][3];
         rangeitem_str = 
             "<tr>\
-              <td width='20%'>\
+              <td width='15%'>\
                 <span class='name'>" + feature + "</span>\
               </td>\
-              <td width='10%'>\
-                <span id='" + feature + "_val' class='val'>" + default_val + "</span>\
+              <td class='td_val' width='15%'>\
+                <span id='" + feature + "_val'>" + default_val + "</span>\
               </td>\
               <td width='70%'>\
                 <form action='#'>\
@@ -41,7 +41,6 @@ $(function() {
               </td>\
             </tr>";
         $('#range_items').append(rangeitem_str);
-
     }
     
 });

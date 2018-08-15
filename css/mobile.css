@@ -47,3 +47,7 @@ form {
     min-width: 30%;
     padding-right: 5px;
 }
+
+.td_val {
+    min-width: 60px;
+}
