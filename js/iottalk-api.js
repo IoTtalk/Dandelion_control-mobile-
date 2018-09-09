@@ -1,3 +1,5 @@
+var passwd = null;
+
 (function() {
 
     function register(mac, profile, callback) {
@@ -18,6 +20,7 @@
                 console.log('register failed');
             },
             complete: function() {
+                passwd = JSON.parse(ret).password;
                 if( typeof callback === 'function' )
                     callback(ret);
             },
@@ -31,6 +34,7 @@
             url: '/' + mac + '/' + feature,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({'data': [data]}),
+            headers: {'password-key' : passwd},
             error: function(err, st) {
                 console.log(err);
                 console.log(st);
