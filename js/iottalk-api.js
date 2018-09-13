@@ -1,40 +1,13 @@
-var passwd = null;
+var password = 0;
 
 (function() {
-
-    function register(mac, profile, callback) {
-        var ret = null;
-        $.ajax({
-            type: 'POST',
-            url: '/' + mac,
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify({'profile': profile}),
-            success: function(res) {
-                console.log(res);
-                console.log('register success');
-                ret = res;
-            },
-            error: function(err, st) {
-                console.log(err);
-                console.log(st);
-                console.log('register failed');
-            },
-            complete: function() {
-                passwd = JSON.parse(ret).password;
-                if( typeof callback === 'function' )
-                    callback(ret);
-            },
-            dataType: 'text',
-        });
-    }
-
     function update(mac, feature, data, callback) {
         $.ajax({
             type: "PUT",
             url: '/' + mac + '/' + feature,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({'data': [data]}),
-            headers: {'password-key' : passwd},
+            'headers': {'password-key': password},
             error: function(err, st) {
                 console.log(err);
                 console.log(st);
@@ -50,8 +23,15 @@ var passwd = null;
 
     // Export to browser's global for debug
     window.IoTtalk = {
-        register: register,
         update: update,
     };
+})();
 
+(function() {
+    console.log('Loaded.');
+    $.get(window.location.origin + '/da/Dandelion_control\(mobile\)/passwd_dandelion_control'
+        ).done(function(result){
+            password = result;
+            console.log(password);
+        });
 })();
